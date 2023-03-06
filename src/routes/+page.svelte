@@ -18,17 +18,28 @@
 
 	// These variables are the page state.
 	let leagues = [];
+    let fixtures = [];
 
 	// This function is called once to load the page.
 	async function loadData() {
-		leagues = await callAPI("https://api-football-v1.p.rapidapi.com/v3/leagues?current=true")
+	//	leagues = await callAPI("https://api-football-v1.p.rapidapi.com/v3/leagues?current=true")
+        fixtures = await callAPI("https://api-football-v1.p.rapidapi.com/v3/fixtures?league=140&season=2022")
 	}
 	onMount(loadData);
 </script>
 
-<h1>Leagues:</h1>
+<!-- <h1>Leagues:</h1>
 <ul>
 	{#each leagues as league}
-		<li>{league.league.name}</li>
+		<li>{league.league.name} {league.league.id}</li>
 	{/each}
-</ul>
+</ul> -->
+
+<h1>fixtures:</h1>
+<ul>
+	{#each fixtures as fixture}
+		<li>{fixture.teams.home.name} ({fixture.score.fulltime.home}) vs ({fixture.score.fulltime.away}) {fixture.teams.away.name}
+             
+        </li>
+	{/each}
+</ul> 
