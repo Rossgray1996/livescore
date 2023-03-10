@@ -2,13 +2,14 @@
    import { PUBLIC_API_KEY } from '$env/static/public'
    import { onMount } from 'svelte';
    import { page } from '$app/stores';
-    let leagues = [];
-    $: top5 = leagues.slice(0,5);
-    async function loadData() {
-	leagues = await callAPI(`https://api-football-v1.p.rapidapi.com/v3/leagues?country=${$page.params.id}`)
-	}
-	onMount(loadData);
 
+   	// Authorization needed to connect to the API.
+	const settings = {
+		"headers": {
+			"X-RapidAPI-Key": PUBLIC_API_KEY,
+			"X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
+		}
+	};
     async function callAPI(URL) {
 		// Call the API, wait for response, and parse response.
 		let response = await fetch(URL, settings);
@@ -16,13 +17,13 @@
 		return responseData.response;
 	}
 
-	// Authorization needed to connect to the API.
-	const settings = {
-		"headers": {
-			"X-RapidAPI-Key": PUBLIC_API_KEY,
-			"X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
-		}
-	};
+    let leagues = [];
+    $: top5 = leagues.slice(0,5);
+	
+    async function loadData() {
+		leagues = await callAPI(`https://api-football-v1.p.rapidapi.com/v3/leagues?country=${$page.params.id}`)
+	}
+	page.subscribe(loadData);
 </script>
 
 <a href="/countries/England">England</a> <br>
