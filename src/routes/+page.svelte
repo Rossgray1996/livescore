@@ -18,14 +18,19 @@
 
 	// These variables are the page state.
 	let leagues = [];
-    let fixtures = [];
+    let spanishFixtures = [];
+    let calender = [];
+    let englishFixtures = [];
 
 	// This function is called once to load the page.
 	async function loadData() {
 	//	leagues = await callAPI("https://api-football-v1.p.rapidapi.com/v3/leagues?current=true")
-        fixtures = await callAPI("https://api-football-v1.p.rapidapi.com/v3/fixtures?league=140&season=2022")
+    spanishFixtures = await callAPI("https://api-football-v1.p.rapidapi.com/v3/fixtures?league=140&season=2022")
+    englishFixtures = await callAPI("https://api-football-v1.p.rapidapi.com/v3/fixtures?league=39&season=2022")
 	}
 	onMount(loadData);
+
+    
 </script>
 
 <!-- <h1>Leagues:</h1>
@@ -37,9 +42,21 @@
 
 <h1>fixtures:</h1>
 <ul>
-	{#each fixtures as fixture}
+	{#each spanishFixtures as fixture}
 		<li>{fixture.teams.home.name} ({fixture.score.fulltime.home}) vs ({fixture.score.fulltime.away}) {fixture.teams.away.name}
              
         </li>
 	{/each}
 </ul> 
+<ul>
+	{#each englishFixtures as fixture}
+		<li>{fixture.teams.home.name} ({fixture.score.fulltime.home}) vs ({fixture.score.fulltime.away}) {fixture.teams.away.name}
+             
+        </li>
+	{/each}
+</ul> 
+<style>
+    ul{border: 1px solid blue; padding: 10px;}
+li{display: inline-block; border: 1px solid blue; margin: 5px; padding: 10px; vertical-align: top;}
+
+</style>
