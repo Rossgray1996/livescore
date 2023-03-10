@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-
+    import { PUBLIC_API_KEY } from '$env/static/public'
 	async function callAPI(URL) {
 		// Call the API, wait for response, and parse response.
 		let response = await fetch(URL, settings);
@@ -11,7 +11,7 @@
 	// Authorization needed to connect to the API.
 	const settings = {
 		"headers": {
-			"X-RapidAPI-Key": "3666ffb09amsh61e08b57b0a4caep12031ajsn71030a58bcbb",
+			"X-RapidAPI-Key": PUBLIC_API_KEY,
 			"X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
 		}
 	};
@@ -34,11 +34,7 @@
 </script>
 
 <!-- <h1>Leagues:</h1>
-<ul>
-	{#each leagues as league}
-		<li>{league.league.name} {league.league.id}</li>
-	{/each}
-</ul> -->
+-->
 
 <h1>fixtures:</h1>
 <ul>
