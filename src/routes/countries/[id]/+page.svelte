@@ -23,7 +23,11 @@
     async function loadData() {
 		leagues = await callAPI(`https://api-football-v1.p.rapidapi.com/v3/leagues?country=${$page.params.id}`)
 	}
-	page.subscribe(loadData);
+
+	onMount(function() {
+		page.subscribe(loadData);
+	});
+	
 </script>
 
 <a href="/countries/England">England</a> <br>
