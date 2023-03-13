@@ -21,11 +21,15 @@
     };
 
     let leagues = [];
+    let leagueName = "loading"
     $: top5 = leagues.slice(0, 5);
+    
     async function loadData() {
+        
         leagues = await callAPI(
-            `https://api-football-v1.p.rapidapi.com/v3/leagues?country=${$page.params.id}`
+            `https://api-football-v1.p.rapidapi.com/v3/fixtures?league=${$page.params.id}&season=2022`
         );
+     leagueName = leagues[0].league.name;
     }
 
     onMount(function () {
@@ -41,10 +45,9 @@
 <a href="/countries/Germany">Germany</a> <br />
 <a href="/countries/Portugal">Portugal</a> <br />
 <a href="/countries/Netherlands">Netherlands</a> <br />
-
+<h1>{leagueName}</h1>
 <ul>
     {#each top5 as league}
-       
-    <li> <a href="/leagues/{league.league.id}" >League Name {league.league.name}</a>{league.league.name}</li>
+        <li>{league.teams.home.name} {league.teams.away.name}</li>
     {/each}
 </ul>
