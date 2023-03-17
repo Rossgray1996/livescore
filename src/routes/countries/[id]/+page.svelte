@@ -45,6 +45,19 @@
 <ul>
     {#each top5 as league}
        
-    <li> <a href="/leagues/{league.league.id}" >League Name {league.league.name}</a>{league.league.name}</li>
+    <li> <a href="/leagues/{league.league.id}" >{league.league.name}</a>{league.league.name}</li>
     {/each}
 </ul>
+<style>
+li{display: inline-block; border: 1px solid blue; margin: 5px; padding: 10px; vertical-align: top;}
+	ul{
+		color: blue;
+		font-family: 'Comic Sans MS', cursive;
+		font-size: 1em; }
+
+    a { color: blue;
+font-size: 1em;
+font-family: 'Comic Sans MS', cursive;
+}
+
+</style>

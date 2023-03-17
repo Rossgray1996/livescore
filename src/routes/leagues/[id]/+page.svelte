@@ -22,7 +22,6 @@
 
     let leagues = [];
     let leagueName = "loading"
-    $: top5 = leagues.slice(0, 5);
     
     async function loadData() {
         
@@ -37,7 +36,7 @@
     });
 </script>
 
-<a href="/countries/England">England</a> <br />
+<a href="/countries/England"> England</a> <br />
 <a href="/countries/Spain">Spain</a> <br />
 <a href="/countries/France">France</a> <br />
 <a href="/countries/Italy">Italy</a> <br />
@@ -47,7 +46,25 @@
 <a href="/countries/Netherlands">Netherlands</a> <br />
 <h1>{leagueName}</h1>
 <ul>
-    {#each top5 as league}
-        <li>{league.teams.home.name} {league.teams.away.name}</li>
+    {#each leagues as league}
+        <li>{league.teams.home.name} vs {league.teams.away.name}</li>
     {/each}
 </ul>
+<style>
+    
+li{display: inline-block; border: 1px solid blue; margin: 5px; padding: 10px; vertical-align: top;}
+	ul{
+		color: blue;
+		font-family: 'Comic Sans MS', cursive;
+		font-size: 1em;
+	}
+    a { color: blue;
+font-size: 1em;
+font-family: 'Comic Sans MS', cursive; }
+h1 {
+    color: blue;
+
+}
+
+
+</style>
