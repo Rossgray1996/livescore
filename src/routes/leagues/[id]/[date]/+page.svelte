@@ -31,6 +31,8 @@
         // Call the API, wait for response, and parse response.
         let response = await fetch(URL, settings);
         let responseData = await response.json();
+        if (responseData.message) alert(responseData.message);
+
         return responseData.response;
     }
 
@@ -49,7 +51,11 @@
         fixtures = await callAPI(
             `https://api-football-v1.p.rapidapi.com/v3/fixtures?league=${$page.params.id}&date=${$page.params.date}&season=2022`
         );
-        leagueName = fixtures[0].league.name;
+        if (fixtures.length) {
+            leagueName = fixtures[0].league.name;
+        } else {
+            leagueName = "no matches this date";
+        }
     }
 
     onMount(function () {

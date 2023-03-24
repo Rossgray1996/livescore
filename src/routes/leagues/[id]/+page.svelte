@@ -43,6 +43,8 @@
         // Call the API, wait for response, and parse response.
         let response = await fetch(URL, settings);
         let responseData = await response.json();
+        if (responseData.message) alert(responseData.message);
+
         return responseData.response;
     }
 
