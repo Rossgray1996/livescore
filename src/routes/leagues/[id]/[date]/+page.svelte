@@ -3,20 +3,8 @@
     import { onMount } from "svelte";
     import { page } from "$app/stores";
     import { Datepicker } from "svelte-mui";
-    import { goto } from "$app/navigation";
 
     onMount(loadData);
-
-    let date = null;
-
-    function dateChanged() {
-        if (date && date != "Invalid Date") {
-            let urlDate = date.toISOString().split("T")[0];
-            goto(`/leagues/${$page.params.id}/${urlDate}`);
-        }
-    }
-
-    $: date, dateChanged();
     function formatDate(inputDate) {
         // Create a new date object with the desired date
         const date = new Date(inputDate);
@@ -59,7 +47,7 @@
 
     async function loadData() {
         fixtures = await callAPI(
-            `https://api-football-v1.p.rapidapi.com/v3/fixtures?league=${$page.params.id}&season=2022`
+            `https://api-football-v1.p.rapidapi.com/v3/fixtures?league=${$page.params.id}&date=${$page.params.date}&season=2022`
         );
         leagueName = fixtures[0].league.name;
     }
@@ -68,10 +56,6 @@
         page.subscribe(loadData);
     });
 </script>
-
-<div class="card">
-    <Datepicker header={false} bind:value={date} />
-</div>
 
 <a href="/countries/England"> England</a> <br />
 <a href="/countries/Spain">Spain</a> <br />
@@ -109,10 +93,5 @@
     }
     h1 {
         color: blue;
-    }
-    .card {
-        display: inline-block;
-        box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2),
-            0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
     }
 </style>
