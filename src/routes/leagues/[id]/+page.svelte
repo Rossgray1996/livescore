@@ -5,8 +5,6 @@
     import { Datepicker } from "svelte-mui";
     import { goto } from "$app/navigation";
 
-    onMount(loadData);
-
     let date = null;
 
     function dateChanged() {
@@ -71,17 +69,19 @@
     });
 </script>
 
+<button variant="contained" class="button"> <a href="/"> Home</a></button>
+
 <div class="card">
     <Datepicker header={false} bind:value={date} />
 </div>
 
-<a href="/countries/England"> England</a> <br />
-<a href="/countries/Spain">Spain</a> <br />
-<a href="/countries/France">France</a> <br />
-<a href="/countries/Italy">Italy</a> <br />
-<a href="/countries/Scotland">Scotland</a> <br />
-<a href="/countries/Germany">Germany</a> <br />
-<a href="/countries/Portugal">Portugal</a> <br />
+<a href="/countries/England"> England</a> <br /> <br />
+<a href="/countries/Spain">Spain</a> <br /> <br />
+<a href="/countries/France">France</a> <br /> <br />
+<a href="/countries/Italy">Italy</a> <br /> <br />
+<a href="/countries/Scotland">Scotland</a> <br /><br />
+<a href="/countries/Germany">Germany</a> <br /><br />
+<a href="/countries/Portugal">Portugal</a> <br /><br />
 <a href="/countries/Netherlands">Netherlands</a> <br />
 <h1>{leagueName}</h1>
 <ul>
@@ -92,29 +92,49 @@
 </ul>
 
 <style>
+    * {
+        background-color: orangered;
+    }
     li {
         display: inline-block;
-        border: 1px solid blue;
+        border: 1px solid white;
         margin: 5px;
         padding: 10px;
         vertical-align: top;
     }
     ul {
-        color: blue;
+        color: white;
         font-family: "Comic Sans MS", cursive;
         font-size: 1em;
     }
     a {
-        color: blue;
+        color: white;
         font-size: 1em;
         font-family: "Comic Sans MS", cursive;
+        border-style: solid;
     }
     h1 {
-        color: blue;
+        color: white;
     }
     .card {
         display: inline-block;
         box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2),
             0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 35%;
+        color: white;
+    }
+
+    .button {
+        background-color: orangered;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
     }
 </style>

@@ -80,24 +80,27 @@
 </ul>
 
 <style>
+    * {
+        background-color: orangered;
+    }
     li {
         display: inline-block;
-        border: 1px solid blue;
+        border: 1px solid white;
         margin: 5px;
         padding: 10px;
         vertical-align: top;
     }
     ul {
-        color: blue;
+        color: white;
         font-family: "Comic Sans MS", cursive;
         font-size: 1em;
     }
     a {
-        color: blue;
+        color: white;
         font-size: 1em;
         font-family: "Comic Sans MS", cursive;
     }
     h1 {
-        color: blue;
+        color: white;
     }
 </style>
