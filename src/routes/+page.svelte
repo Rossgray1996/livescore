@@ -3,18 +3,8 @@
     import { onMount } from "svelte";
     import { page } from "$app/stores";
     import { Datepicker } from "svelte-mui";
-    import { goto } from "$app/navigation";
 
-    let date = null;
-
-    function dateChanged() {
-        if (date && date != "Invalid Date") {
-            let urlDate = date.toISOString().split("T")[0];
-            goto(`/leagues/${$page.params.id}/${urlDate}`);
-        }
-    }
-
-    $: date, dateChanged();
+    onMount(loadData);
     function formatDate(inputDate) {
         // Create a new date object with the desired date
         const date = new Date(inputDate);
@@ -24,13 +14,13 @@
             year: "numeric",
             month: "long",
             day: "numeric",
-            hour: "numeric",
-            minute: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
             hour12: true,
         };
 
         // Format the date using the Intl.DateTimeFormat object
-        const formattedDate = new Intl.DateTimeFormat("en-UK", options).format(
+        const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
             date
         );
 
@@ -59,9 +49,13 @@
 
     async function loadData() {
         fixtures = await callAPI(
-            `https://api-football-v1.p.rapidapi.com/v3/fixtures?league=${$page.params.id}&season=2022`
+            "https://api-football-v1.p.rapidapi.com/v3/fixtures?live=all"
         );
-        leagueName = fixtures[0].league.name;
+        if (fixtures.length) {
+            leagueName = fixtures[0].league.name;
+        } else {
+            leagueName = "no matches this date";
+        }
     }
 
     onMount(function () {
@@ -69,25 +63,28 @@
     });
 </script>
 
-<svelte:head>
-    <title>league calender {leagueName}</title>
-</svelte:head>
-<h1>{leagueName}</h1>
-
-<button variant="contained" class="button"> <a href="/"> Home</a></button>
-
-<div class="card">
-    <Datepicker header={false} bind:value={date} />
-</div>
-
-<a href="/countries/England"> England</a> <br /> <br />
-<a href="/countries/Spain">Spain</a> <br /> <br />
-<a href="/countries/France">France</a> <br /> <br />
-<a href="/countries/Italy">Italy</a> <br /> <br />
-<a href="/countries/Scotland">Scotland</a> <br /><br />
-<a href="/countries/Germany">Germany</a> <br /><br />
-<a href="/countries/Portugal">Portugal</a> <br /><br />
+<a href="/countries/England"> England</a> <br />
+<a href="/countries/Spain">Spain</a> <br />
+<a href="/countries/France">France</a> <br />
+<a href="/countries/Italy">Italy</a> <br />
+<a href="/countries/Scotland">Scotland</a> <br />
+<a href="/countries/Germany">Germany</a> <br />
+<a href="/countries/Portugal">Portugal</a> <br />
 <a href="/countries/Netherlands">Netherlands</a> <br />
+<svelte:head>
+    <title>Live Games</title>
+</svelte:head>
+<h1>Live Games</h1>
+<ul>
+    {#each fixtures as fixture}
+        <li>
+            {formatDate(fixture.fixture.date)} <br />
+            {fixture.teams.home.name}
+            ({fixture.goals.home}) vs ({fixture.goals.away}) {fixture.teams.away
+                .name}
+        </li>
+    {/each}
+</ul>
 
 <style>
     * {
@@ -109,31 +106,8 @@
         color: white;
         font-size: 1em;
         font-family: "Comic Sans MS", cursive;
-        border-style: solid;
     }
     h1 {
         color: white;
-        text-align: center;
-    }
-    .card {
-        display: inline-block;
-        box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2),
-            0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 35%;
-        color: white;
-    }
-
-    .button {
-        background-color: orangered;
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
     }
 </style>

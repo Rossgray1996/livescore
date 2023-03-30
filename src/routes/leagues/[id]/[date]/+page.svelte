@@ -14,13 +14,13 @@
             year: "numeric",
             month: "long",
             day: "numeric",
-            hour: "numeric",
-            minute: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
             hour12: true,
         };
 
         // Format the date using the Intl.DateTimeFormat object
-        const formattedDate = new Intl.DateTimeFormat("en-UK", options).format(
+        const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
             date
         );
 
@@ -73,9 +73,13 @@
 <a href="/countries/Netherlands">Netherlands</a> <br />
 <h1>{leagueName}</h1>
 <ul>
-    {#each fixtures as league}
-        <li>{league.teams.home.name} vs {league.teams.away.name}</li>
-        <li>{formatDate(league.fixture.date)}</li>
+    {#each fixtures as fixture}
+        <li>
+            {formatDate(fixture.fixture.date)} <br />
+            {fixture.teams.home.name}
+            ({fixture.goals.home}) vs ({fixture.goals.away}) {fixture.teams.away
+                .name}
+        </li>
     {/each}
 </ul>
 
