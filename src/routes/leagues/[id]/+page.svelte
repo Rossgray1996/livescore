@@ -93,18 +93,7 @@
     * {
         background-color: orangered;
     }
-    li {
-        display: inline-block;
-        border: 1px solid white;
-        margin: 5px;
-        padding: 10px;
-        vertical-align: top;
-    }
-    ul {
-        color: white;
-        font-family: "Comic Sans MS", cursive;
-        font-size: 1em;
-    }
+
     a {
         color: white;
         font-size: 1em;

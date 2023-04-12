@@ -46,11 +46,17 @@
 
     let fixtures = [];
     let leagueName = "loading";
+    let filteredFixtures = [];
 
     async function loadData() {
         fixtures = await callAPI(
             "https://api-football-v1.p.rapidapi.com/v3/fixtures?live=all"
         );
+        const leagueIDs = [65, 66, 552];
+        filteredFixtures = fixtures.filter((item) =>
+            leagueIDs.includes(item.league.id)
+        );
+        console.log(fixtures);
         if (fixtures.length) {
             leagueName = fixtures[0].league.name;
         } else {
@@ -76,7 +82,7 @@
 </svelte:head>
 <h1>Live Games</h1>
 <ul>
-    {#each fixtures as fixture}
+    {#each filteredFixtures as fixture}
         <li>
             {formatDate(fixture.fixture.date)} <br />
             {fixture.teams.home.name}
