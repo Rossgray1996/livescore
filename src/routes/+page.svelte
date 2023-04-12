@@ -78,7 +78,7 @@
 <a href="/countries/Portugal">Portugal</a> <br />
 <a href="/countries/Netherlands">Netherlands</a> <br />
 <svelte:head>
-    <title>Live Games</title>
+    <title>Live Score</title>
 </svelte:head>
 <h1>Live Games</h1>
 <ul>
