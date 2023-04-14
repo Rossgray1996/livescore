@@ -103,6 +103,7 @@
         color: white;
         font-size: 1em;
         font-family: "Comic Sans MS", cursive;
+        margin-right: 30px;
     }
     h1 {
         color: white;

@@ -35,14 +35,48 @@
     });
 </script>
 
-<a href="/countries/England">England</a> <br />
-<a href="/countries/Spain">Spain</a> <br />
-<a href="/countries/France">France</a> <br />
-<a href="/countries/Italy">Italy</a> <br />
-<a href="/countries/Scotland">Scotland</a> <br />
-<a href="/countries/Germany">Germany</a> <br />
-<a href="/countries/Portugal">Portugal</a> <br />
-<a href="/countries/Netherlands">Netherlands</a> <br />
+<div>
+    <a
+        href="/countries/England"
+        style="text-decoration; none; color : white; margin-right:30px;"
+        >England</a
+    >
+    <a
+        href="/countries/Spain"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Spain</a
+    >
+    <a
+        href="/countries/France"
+        style="text-decoration : none; color :white; margin-right:30px; "
+        >France</a
+    >
+    <a
+        href="/countries/Italy"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Italy</a
+    >
+    <a
+        href="/countries/Scotland"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Scotland</a
+    >
+    <a
+        href="/countries/Germany"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Germany</a
+    >
+    <a
+        href="/countries/Portugal"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Portugal</a
+    >
+    <a
+        href="/countries/Netherlands"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Netherlands</a
+    > <br />
+</div>
 
 <ul>
     {#each top5 as league}
@@ -73,8 +107,17 @@
 
     a {
         color: white;
-        font-size: 1em;
+        font-size: 1.7em;
         font-family: "Comic Sans MS", cursive;
         border-style: solid;
+        margin-right: 30px;
+    }
+
+    div {
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        width: fit-content;
+        block-size: fit-content;
     }
 </style>
