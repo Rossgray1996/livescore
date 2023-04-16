@@ -1,8 +1,9 @@
 <script>
-    import { PUBLIC_API_KEY } from "$env/static/public";
     import { onMount } from "svelte";
     import { page } from "$app/stores";
     import { Datepicker } from "svelte-mui";
+
+    import { callAPI } from "../../../../API.js";
 
     onMount(loadData);
     function formatDate(inputDate) {
@@ -26,23 +27,6 @@
 
         return formattedDate; // Output: "August 15, 2022, 3:30 PM"
     }
-
-    async function callAPI(URL) {
-        // Call the API, wait for response, and parse response.
-        let response = await fetch(URL, settings);
-        let responseData = await response.json();
-        if (responseData.message) alert(responseData.message);
-
-        return responseData.response;
-    }
-
-    // Authorization needed to connect to the API.
-    const settings = {
-        headers: {
-            "X-RapidAPI-Key": PUBLIC_API_KEY,
-            "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
-        },
-    };
 
     let fixtures = [];
     let leagueName = "loading";
