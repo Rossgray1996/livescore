@@ -63,14 +63,48 @@
     });
 </script>
 
-<a href="/countries/England"> England</a> <br />
-<a href="/countries/Spain">Spain</a> <br />
-<a href="/countries/France">France</a> <br />
-<a href="/countries/Italy">Italy</a> <br />
-<a href="/countries/Scotland">Scotland</a> <br />
-<a href="/countries/Germany">Germany</a> <br />
-<a href="/countries/Portugal">Portugal</a> <br />
-<a href="/countries/Netherlands">Netherlands</a> <br />
+<div>
+    <a
+        href="/countries/England"
+        style="text-decoration; none; color : white; margin-right:30px;"
+        >England</a
+    >
+    <a
+        href="/countries/Spain"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Spain</a
+    >
+    <a
+        href="/countries/France"
+        style="text-decoration : none; color :white; margin-right:30px; "
+        >France</a
+    >
+    <a
+        href="/countries/Italy"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Italy</a
+    >
+    <a
+        href="/countries/Scotland"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Scotland</a
+    >
+    <a
+        href="/countries/Germany"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Germany</a
+    >
+    <a
+        href="/countries/Portugal"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Portugal</a
+    >
+    <a
+        href="/countries/Netherlands"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Netherlands</a
+    > <br />
+</div>
 <h1>{leagueName}</h1>
 <ul>
     {#each fixtures as fixture}
@@ -101,10 +135,19 @@
     }
     a {
         color: white;
-        font-size: 1em;
+        font-size: 1.5em;
         font-family: "Comic Sans MS", cursive;
+        margin-right: 30px;
     }
     h1 {
         color: white;
+        text-align: center;
+    }
+    div {
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        width: fit-content;
+        block-size: fit-content;
     }
 </style>

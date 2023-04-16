@@ -52,7 +52,7 @@
         fixtures = await callAPI(
             "https://api-football-v1.p.rapidapi.com/v3/fixtures?live=all"
         );
-        const leagueIDs = [65, 66, 552];
+        const leagueIDs = [];
         filteredFixtures = fixtures.filter((item) =>
             leagueIDs.includes(item.league.id)
         );
@@ -69,16 +69,51 @@
     });
 </script>
 
-<a href="/countries/England"> England</a> <br />
-<a href="/countries/Spain">Spain</a> <br />
-<a href="/countries/France">France</a> <br />
-<a href="/countries/Italy">Italy</a> <br />
-<a href="/countries/Scotland">Scotland</a> <br />
-<a href="/countries/Germany">Germany</a> <br />
-<a href="/countries/Portugal">Portugal</a> <br />
-<a href="/countries/Netherlands">Netherlands</a> <br />
+<div>
+    <a
+        href="/countries/England"
+        style="text-decoration; none; color : white; margin-right:30px;"
+        >England</a
+    >
+    <a
+        href="/countries/Spain"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Spain</a
+    >
+    <a
+        href="/countries/France"
+        style="text-decoration : none; color :white; margin-right:30px; "
+        >France</a
+    >
+    <a
+        href="/countries/Italy"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Italy</a
+    >
+    <a
+        href="/countries/Scotland"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Scotland</a
+    >
+    <a
+        href="/countries/Germany"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Germany</a
+    >
+    <a
+        href="/countries/Portugal"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Portugal</a
+    >
+    <a
+        href="/countries/Netherlands"
+        style="text-decoration : none; color : white; margin-right:30px;"
+        >Netherlands</a
+    > <br />
+</div>
+
 <svelte:head>
-    <title>Live Games</title>
+    <title>Live Score</title>
 </svelte:head>
 <h1>Live Games</h1>
 <ul>
@@ -110,10 +145,25 @@
     }
     a {
         color: white;
-        font-size: 1em;
+        font-size: 1.5em;
         font-family: "Comic Sans MS", cursive;
+        margin-right: 30px;
+        display: inline-block;
+        padding: 0px 5px 0px 10px;
+        text-align: center;
+        position: relative;
     }
     h1 {
         color: white;
+        text-align: center;
+    }
+    div {
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        width: fit-content;
+        block-size: fit-content;
+        text-align: center;
+        align-items: center;
     }
 </style>
