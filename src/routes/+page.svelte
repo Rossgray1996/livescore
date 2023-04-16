@@ -29,7 +29,7 @@
 
     let fixtures = [];
     let leagueName = "loading";
-    let filteredFixtures = [39];
+    let filteredFixtures = [39, 40];
 
     async function loadData() {
         fixtures = await callAPI(
