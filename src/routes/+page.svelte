@@ -34,7 +34,11 @@
         fixtures = await callAPI(
             "https://api-football-v1.p.rapidapi.com/v3/fixtures?live=all"
         );
-        const leagueIDs = [39, 40];
+        const leagueIDs = [
+            39, 40, 41, 42, 43, 44, 45, 46, 47, 140, 141, 142, 143, 61, 62, 63,
+            64, 65, 135, 136, 137, 138, 139, 180, 179, 181, 182, 183, 78, 79,
+            80, 81, 82,
+        ];
         filteredFixtures = fixtures.filter((item) =>
             leagueIDs.includes(item.league.id)
         );
