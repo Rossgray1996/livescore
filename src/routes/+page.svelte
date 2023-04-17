@@ -29,16 +29,16 @@
 
     let fixtures = [];
     let leagueName = "loading";
-    let filteredFixtures = [39, 40];
-
+    let filteredFixtures = [];
     async function loadData() {
         fixtures = await callAPI(
             "https://api-football-v1.p.rapidapi.com/v3/fixtures?live=all"
         );
-        const leagueIDs = [39, 40];
+        const leagueIDs = [];
         filteredFixtures = fixtures.filter((item) =>
             leagueIDs.includes(item.league.id)
         );
+
         console.log(fixtures);
         if (fixtures.length) {
             leagueName = fixtures[0].league.name;
