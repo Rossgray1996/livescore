@@ -20,7 +20,7 @@
         };
 
         // Format the date using the Intl.DateTimeFormat object
-        const formattedDate = new Intl.DateTimeFormat("en-GB", options).format(
+        const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
             date
         );
 
@@ -34,7 +34,7 @@
         fixtures = await callAPI(
             "https://api-football-v1.p.rapidapi.com/v3/fixtures?live=all"
         );
-        const leagueIDs = [];
+        const leagueIDs = [39, 40];
         filteredFixtures = fixtures.filter((item) =>
             leagueIDs.includes(item.league.id)
         );
